@@ -14,3 +14,7 @@ Duplicate science data that doesn't fit within the container is discarded by def
 the Kerbal just hangs onto the data in its hands until asked to discard via normal means. This can be
 changed within the 'StoreMyReports.json' configuration file, but I can't see why anyone would actually
 want to do this though.
+
+---
+
+This mod includes version checking using [MiniAVC](http://forum.kerbalspaceprogram.com/threads/79745). If you opt-in, it will use the internet to check whether there is a new version available. Data is only read from the internet and no personal information is sent. For a more comprehensive version checking experience, please download the [KSP-AVC Plugin](http://forum.kerbalspaceprogram.com/threads/79745).
