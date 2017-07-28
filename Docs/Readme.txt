@@ -2,7 +2,7 @@ Title: Store My Reports
 Author: CYBUTEK
 License: GPLv3
 
-The primary job of this mod is to fix the innability for Kerbals to find gloveboxes within their vessel
+The primary job of this mod is to fix the inability for Kerbals to find glove-boxes within their vessel
 or pockets on their EVA suits. You can now make crew reports and have them stored without the need to
 exit the vessel, take all of the reports out, then put them all back in again. It also allows Kerbals
 on EVA to store science data within pockets on their EVA suits.
