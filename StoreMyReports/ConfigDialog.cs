@@ -19,6 +19,7 @@
 
 */
 
+using System.Reflection;
 using UnityEngine;
 
 namespace StoreMyReports
@@ -80,7 +81,7 @@ namespace StoreMyReports
         /// </summary>
         private DialogGUIBase[] GetDialogGUI()
         {
-            // layout containing the settings objects
+            // layout containing the settings gui objects
             DialogGUIVerticalLayout settingsLayout = new DialogGUIVerticalLayout(0f, 0f, 0f, new RectOffset(5, 25, 5, 5), TextAnchor.UpperLeft,
                 new DialogGUIToggleButton(tempConfig.discardDuplicates, "Automatically Discard Duplicates", (value) => tempConfig.discardDuplicates = value, h: 30f)
             );
@@ -88,16 +89,22 @@ namespace StoreMyReports
             // scroll list for containing the settings layout
             DialogGUIScrollList settingsScrollList = new DialogGUIScrollList(-Vector2.one, false, true, settingsLayout);
 
-            // layout containing the bottom button objects
-            DialogGUIBase bottomButtonsLayout = new DialogGUIHorizontalLayout
-            (
+            // layout containing the bottom gui objects
+            DialogGUIBase bottomLayout = new DialogGUIHorizontalLayout
+            (TextAnchor.MiddleLeft,
+
+                // version
                 new DialogGUIFlexibleSpace(),
+                new DialogGUILabel($"<color=#eee><i>v{Assembly.GetExecutingAssembly().GetName().Version}</i></color>"),
+                new DialogGUIFlexibleSpace(),
+
+                // buttons
                 new DialogGUIButton("Apply", Apply, 80f, 30f, false),
                 new DialogGUIButton("Accept", Accept, 80f, 30f, false),
                 new DialogGUIButton("Close", Close, 80f, 30f, false)
             );
 
-            return new DialogGUIBase[2] { settingsScrollList, bottomButtonsLayout };
+            return new DialogGUIBase[2] { settingsScrollList, bottomLayout };
         }
 
         private void OnDestroy()
