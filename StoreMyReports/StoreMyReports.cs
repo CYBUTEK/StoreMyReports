@@ -21,8 +21,6 @@
 
 using KSP.UI.Screens.Flight.Dialogs;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using UnityEngine;
 
 namespace StoreMyReports
@@ -30,56 +28,7 @@ namespace StoreMyReports
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     public class StoreMyReports : MonoBehaviour
     {
-        private static string configFilePath = Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "json");
-
-        [SerializeField]
-        private bool discardDuplicates = true;
-
         private bool isExperimentsResultDialogOpen;
-
-        /// <summary>
-        /// Gets the current instance of the object.
-        /// </summary>
-        public static StoreMyReports Instance { get; private set; }
-
-        /// <summary>
-        /// Gets or sets whether to automatically discard duplicates.
-        /// </summary>
-        public bool DiscardDuplicates
-        {
-            get { return discardDuplicates; }
-            set { discardDuplicates = value; }
-        }
-
-        private void Awake()
-        {
-            // assign current instance
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-
-            // allow only one instance
-            if (Instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        private void OnDisable()
-        {
-            // save configuration
-            File.WriteAllText(configFilePath, JsonUtility.ToJson(this, true));
-        }
-
-        private void OnEnable()
-        {
-            // load configuration
-            if (File.Exists(configFilePath))
-            {
-                JsonUtility.FromJsonOverwrite(File.ReadAllText(configFilePath), this);
-            }
-        }
 
         private void OnExperimentsResultDialogClosed()
         {
@@ -121,7 +70,7 @@ namespace StoreMyReports
                                         allowDataTransfer = false;
 
                                         // discard duplicates
-                                        if (discardDuplicates)
+                                        if (Config.DiscardDuplicates)
                                         {
                                             experiment.DumpData(experimentData);
                                         }
