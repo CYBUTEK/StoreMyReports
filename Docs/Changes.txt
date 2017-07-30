@@ -1,0 +1,9 @@
+1.1.0.0 - 12017-07-31
+    Implemented configuration system:
+        - Separated the configuration from the main StoreMyReports class.
+        - Created application launcher button that shows in the Space Centre scene.
+        - Created configuration dialog using the stock popup dialog system.
+        - The default value for `Discard Duplicates` is now set to `false`.
+
+1.0.0.0 - 12017-07-28
+    Initial release.
