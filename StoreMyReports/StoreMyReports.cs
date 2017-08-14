@@ -28,6 +28,7 @@ namespace StoreMyReports
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     public class StoreMyReports : MonoBehaviour
     {
+        private Vector3 experimentsResultDialogPosition;
         private bool isExperimentsResultDialogOpen;
 
         private void OnExperimentsResultDialogClosed()
@@ -90,12 +91,29 @@ namespace StoreMyReports
             }
         }
 
+        private void OnExperimentsResultDialogOpened()
+        {
+            // set experiments result dialog position to stored position
+            ExperimentsResultDialog.Instance.transform.position = experimentsResultDialogPosition;
+        }
+
         private void Update()
         {
             // check experiments result dialog has closed on this frame
             if (isExperimentsResultDialogOpen && ExperimentsResultDialog.Instance == null)
             {
                 OnExperimentsResultDialogClosed();
+            }
+            if (ExperimentsResultDialog.Instance != null)
+            {
+                // check experiments result dialog has opened on this frame
+                if (isExperimentsResultDialogOpen == false)
+                {
+                    OnExperimentsResultDialogOpened();
+                }
+
+                // update experiments result dialog stored position
+                experimentsResultDialogPosition = ExperimentsResultDialog.Instance.transform.position;
             }
 
             // update experiments result dialog open state
