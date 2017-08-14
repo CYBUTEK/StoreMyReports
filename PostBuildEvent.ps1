@@ -9,8 +9,13 @@ $gameFile = ($gameDir + "\KSP_x64.exe")
 $zipFile = ($solutionDir + "\Release\StoreMyReports-" + $version + ".zip")
 
 # create distributable zip archive
-Compress-Archive -Path $outputDir -DestinationPath $zipFile -Force
-Compress-Archive -Path $docsDir -DestinationPath $zipFile -Update
+$7zip = ("C:\Program Files\7-Zip\7z.exe")
+if (Test-Path $7zip)
+{
+    Remove-Item $zipFile
+    & $7zip a -mx=9 $zipFile $outputDir
+    & $7zip a -mx=9 $zipFile $docsDir
+}
 
 # check if game installation exists
 if (Test-Path $gameFile)
