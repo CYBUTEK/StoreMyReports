@@ -28,7 +28,7 @@ namespace StoreMyReports
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     public class StoreMyReports : MonoBehaviour
     {
-        private Vector3 experimentsResultDialogPosition;
+        private static Vector3 experimentsResultDialogPosition;
         private bool isExperimentsResultDialogOpen;
 
         private void OnExperimentsResultDialogClosed()
