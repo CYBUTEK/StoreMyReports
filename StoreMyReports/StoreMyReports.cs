@@ -93,8 +93,11 @@ namespace StoreMyReports
 
         private void OnExperimentsResultDialogOpened()
         {
-            // set experiments result dialog position to stored position
-            ExperimentsResultDialog.Instance.transform.position = experimentsResultDialogPosition;
+            if (Config.SaveExperimentsResultDialogPosition)
+            {
+                // set experiments result dialog position to stored position
+                ExperimentsResultDialog.Instance.transform.position = experimentsResultDialogPosition;
+            }
         }
 
         private void Update()

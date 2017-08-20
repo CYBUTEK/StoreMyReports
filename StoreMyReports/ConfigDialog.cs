@@ -83,7 +83,8 @@ namespace StoreMyReports
         {
             // layout containing the settings gui objects
             DialogGUIVerticalLayout settingsLayout = new DialogGUIVerticalLayout(0f, 0f, 0f, new RectOffset(5, 25, 5, 5), TextAnchor.UpperLeft,
-                new DialogGUIToggleButton(tempConfig.discardDuplicates, "Automatically Discard Duplicates", (value) => tempConfig.discardDuplicates = value, h: 30f)
+                new DialogGUIToggleButton(tempConfig.discardDuplicates, "Automatically Discard Duplicates", value => tempConfig.discardDuplicates = value, h: 30f),
+                new DialogGUIToggleButton(tempConfig.saveExperimentsResultDialogPosition, "Save Experiements Result Dialog Position", value => tempConfig.saveExperimentsResultDialogPosition = value, h: 30f)
             );
 
             // scroll list for containing the settings layout

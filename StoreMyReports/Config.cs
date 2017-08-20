@@ -30,6 +30,7 @@ namespace StoreMyReports
     public class Config
     {
         public bool discardDuplicates;
+        public bool saveExperimentsResultDialogPosition;
 
         private static Config currentConfig;
         private static string filePath = Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "json");
@@ -50,11 +51,19 @@ namespace StoreMyReports
         }
 
         /// <summary>
-        /// Gets or sets whether to automatically discard duplicates.
+        /// Gets whether to automatically discard duplicates.
         /// </summary>
         public static bool DiscardDuplicates
         {
             get { return currentConfig.discardDuplicates; }
+        }
+
+        /// <summary>
+        /// Gets whether to save the experiments result dialog position.
+        /// </summary>
+        public static bool SaveExperimentsResultDialogPosition
+        {
+            get { return currentConfig.saveExperimentsResultDialogPosition; }
         }
 
         /// <summary>
@@ -80,7 +89,8 @@ namespace StoreMyReports
         {
             return new Config
             {
-                discardDuplicates = currentConfig.discardDuplicates
+                discardDuplicates = currentConfig.discardDuplicates,
+                saveExperimentsResultDialogPosition = currentConfig.saveExperimentsResultDialogPosition
             };
         }
     }
